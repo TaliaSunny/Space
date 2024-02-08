@@ -143,8 +143,54 @@ https://map.vworld.kr/map/ws3dmap.do?mode=MAPW201
 ### mungdaum
 
 멍다움 사이트 
-view 테이블 - DDD 
 
-|  |  |
-|------|------|
-|      |       |
+사용한 방식 
+- (DDD) 대충 설명 하고
+- 사용한 방식의 단점과 장점 이를 보완하기 위해서 어떠한 노력을 했는지 issue를 통해서 확인하도록 링크걸기
+- ppt 이미지 같은거 넣어주기
+- 
+view 테이블 - DDD 
+테이블 :
+storyassistant(전개자에 대한 방식....)
+???
+근데 우리는 이런 방식 사용을 안했는데?
+생활코딩
+| member | product |notice|cart|order|event|qna|
+|------|------|------|------|------|------|------|
+|      |       |||||
+
+문제점과 issue해결 방안
+
+자바 인터페이스를 활용한 도메인 주도 설계(DDD)
+xml mapper는 interface였네..
+- interface는 자바에서 클래스와 클래스 사이에 중개자 역할
+- interface는 다중구현이 가능하다.
+
+- 나는 https://twofootdog.github.io/Spring-DAO%EC%99%80-Mapper%EC%9D%98-%EC%B0%A8%EC%9D%B4%EC%A0%90/
+- 
+- Controller.java - Service.java - Mapper.java - Mapper.xml구조 [더 최근의 것]
+- Controller.java - Service.java - DAO.java - Mapper.xml구조
+
+
+근데 내 구조는? 그냥 service.java - 
+[](https://jung-story.tistory.com/128)https://jung-story.tistory.com/128
+
+Class 사용
+장점
+쿼리문 실행 전에 넣어줄 매개변수와 쿼리 결과값의 변형을 정의할 수 있다.
+Namespace를 내 마음대로 둘 수 있다.
+.xml 파일의 쿼리문 id와 mapper 메소드명을 일치시킬 필요가 없다.
+단점
+Sqlsession 객체를 주입받아야 하며, 쿼리문 실행 시 항상 호출해야 한다.
+쿼리문 호출 시 sqlsession에 .xml 파일의 namespce와 쿼리문 id를 매개변수로 넘겨야한다.
+
+Interface 사용
+장점
+메소드의 내부 구현이 불필요하다.
+Sqlsession 객체 주입이 불펼요하다.
+.xml 파일의 쿼리문 id와 mapper 메소드 명이 일치한다.
+단점
+.xml의 Namespace가 실제 Mapper.java 위치를 가르켜야 한다.
+메소드 내부 정의가 불가능하다.
+
+interface로 사용했다.
